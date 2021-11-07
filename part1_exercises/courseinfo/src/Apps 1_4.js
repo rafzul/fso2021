@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Header = ({props}) => (
-  <h1>{props.name}</h1>
+  <h1>{props}</h1>
 )
 
 const Content = ({props}) => {
-  const [part1, part2, part3] = props['parts']
+  const [part1, part2, part3] = props
   return (
     <div>
       <Part part={part1.name} exercise={part1.exercises}/>
@@ -29,16 +29,7 @@ const Part = function({ part, exercise }) {
 }
 
 function Total({ props }) {
-  //solution 1
-  // let total = props['parts'][0]['exercises'] + props['parts'][1]['exercises'] + props['parts'][2]['exercises']
-  //solution 2
-  const n = props['parts'].map(n => n.exercises)
-  let total = n.reduce((a,b) => (a+b))
-  //function classic
-  // let total = n.reduce(
-  //   function (a, b) {
-  //     return a + b
-  // })
+  let total = props[0].exercises + props[1].exercises + props[2].exercises;
   return (
     <>
     <p>Number of exercises {total} </p>
@@ -47,10 +38,8 @@ function Total({ props }) {
 }
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts : [
-    {
+  const course = 'Half Stack application development'
+  const parts = [{
       name : 'Fundamentals of React',
       exercises : 10
     },
@@ -63,13 +52,12 @@ const App = () => {
       exercises : 14
     }
   ]
-}
 
   return (
     <div>
       <Header props={course} />
-      <Content props={course} />
-      <Total props={course} />
+      <Content props={parts} />
+      <Total props={parts}/>
     </div>
   )
 

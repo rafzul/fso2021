@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Header = ({props}) => (
-  <h1>{props.name}</h1>
+const Header = ({course}) => (
+  <h1>{course}</h1>
 )
 
-const Content = ({props}) => {
-  const [part1, part2, part3] = props['parts']
+const Content = ({course}) => {
+  const [part1, part2, part3] = course
   return (
     <div>
       <Part part={part1.name} exercise={part1.exercises}/>
@@ -28,17 +28,8 @@ const Part = function({ part, exercise }) {
   )
 }
 
-function Total({ props }) {
-  //solution 1
-  // let total = props['parts'][0]['exercises'] + props['parts'][1]['exercises'] + props['parts'][2]['exercises']
-  //solution 2
-  const n = props['parts'].map(n => n.exercises)
-  let total = n.reduce((a,b) => (a+b))
-  //function classic
-  // let total = n.reduce(
-  //   function (a, b) {
-  //     return a + b
-  // })
+function Total({ course }) {
+  let total = course[0].exercises + course[1].exercises + course[2].exercises;
   return (
     <>
     <p>Number of exercises {total} </p>
@@ -47,29 +38,25 @@ function Total({ props }) {
 }
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts : [
-    {
+  const course = 'Half Stack application development'
+  const part1 = {
       name : 'Fundamentals of React',
       exercises : 10
-    },
-    {
+    }
+  const part2 = {
       name : 'Using props to pass data to React',
       exercises : 7
-    },
-    {
+    }
+  const part3 = {
       name : 'State of a component',
       exercises : 14
     }
-  ]
-}
 
   return (
     <div>
-      <Header props={course} />
-      <Content props={course} />
-      <Total props={course} />
+      <Header course={course} />
+      <Content course={[part1, part2, part3]} />
+      <Total course={[part1, part2, part3]}/>
     </div>
   )
 
