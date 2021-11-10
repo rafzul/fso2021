@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from "lottie-react"
-import hupit from "./83685-hubit.json"
+import hupits from "./83685-hubit.json"
 
 const Header = ({props}) => (
   <h1>{props.name}</h1>
@@ -31,7 +31,7 @@ const Part = function({ part, exercise }) {
 }
 
 const LottieFiles = () => {
-  return <Lottie animationData={hupit} />
+  return <Lottie animationData={hupits} />
 }
 
 function Total({ props }) {
