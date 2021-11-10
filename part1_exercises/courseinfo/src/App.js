@@ -1,4 +1,6 @@
 import React from 'react'
+import Lottie from "lottie-react"
+import hupit from "./83685-hubit.json"
 
 const Header = ({props}) => (
   <h1>{props.name}</h1>
@@ -26,6 +28,10 @@ const Part = function({ part, exercise }) {
       <p>{part} {exercise}</p>
     </>
   )
+}
+
+const LottieFiles = () => {
+  return <Lottie animationData={hupit} />
 }
 
 function Total({ props }) {
@@ -70,6 +76,7 @@ const App = () => {
       <Header props={course} />
       <Content props={course} />
       <Total props={course} />
+      <LottieFiles />
     </div>
   )
 
